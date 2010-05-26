@@ -1,0 +1,17 @@
+Cryptolib is a cryptographic library for Arduino.
+
+Secure hashing
+  Produces a short message hash with cryptographic properties. It is computationally unfeasible to generate messages with the same hash, or determine the contents of a message from its hash.
+  Algorithms supported: SHA-1, SHA-256
+
+Hashed message authentication
+  Produces a short message hash with cryptographic properties from a message and secure key.
+  Algorithms supported: HMAC-SHA-1, HMAC-SHA-256
+
+
+Library verification
+  Verification code is included in the example sketches.
+  SHA-1: FIPS 180-2, RFC3174 compliant
+  HMAC-SHA-1: FIPS 198a compliant
+  SHA-256: FIPS 180-2, RFC4231 compliant
+  HMAC-SHA-256:  RFC4231 compliant
