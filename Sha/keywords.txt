@@ -1,0 +1,24 @@
+#######################################
+# Syntax Coloring Map For DmxSimple
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+Sha1	KEYWORD1
+Sha256	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+init	KEYWORD2
+initHmac	KEYWORD2
+add	KEYWORD2
+result	KEYWORD2
+resultHmac	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
