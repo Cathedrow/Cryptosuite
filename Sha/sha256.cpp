@@ -3,8 +3,6 @@
 #include <avr/pgmspace.h>
 #include "sha256.h"
 
-//#include "debugstuff.c"
-
 uint32_t sha256K[] PROGMEM = {
   0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
   0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
@@ -40,7 +38,6 @@ uint32_t Sha256Class::ror32(uint32_t number, uint8_t bits) {
 }
 
 void Sha256Class::hashBlock() {
-  // Sha256 only for now
   uint8_t i;
   uint32_t a,b,c,d,e,f,g,h,t1,t2;
 
@@ -133,7 +130,6 @@ uint8_t* Sha256Class::result(void) {
   return state.b;
 }
 
-
 #define HMAC_IPAD 0x36
 #define HMAC_OPAD 0x5c
 
@@ -152,7 +148,6 @@ void Sha256Class::initHmac(const uint8_t* key, int keyLength) {
     // Block length keys are used as is
     memcpy(keyBuffer,key,keyLength);
   }
-  //for (i=0; i<BLOCK_LENGTH; i++) debugHH(keyBuffer[i]);
   // Start inner hash
   init();
   for (i=0; i<BLOCK_LENGTH; i++) {
@@ -162,10 +157,8 @@ void Sha256Class::initHmac(const uint8_t* key, int keyLength) {
 
 uint8_t* Sha256Class::resultHmac(void) {
   uint8_t i;
-    // Complete inner hash
+  // Complete inner hash
   memcpy(innerHash,result(),HASH_LENGTH);
-  // now innerHash[] contains H((K0 xor ipad)||text)
-
   // Calculate outer hash
   init();
   for (i=0; i<BLOCK_LENGTH; i++) write(keyBuffer[i] ^ HMAC_OPAD);
